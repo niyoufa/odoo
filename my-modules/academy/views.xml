@@ -1,0 +1,45 @@
+<openerp>
+ <data>
+
+  <record id="action_academy_teachers" model="ir.actions.act_window">
+    <field name="name">Academy teacher</field>
+    <field name="res_model">academy.teachers</field>
+  </record>
+
+  <!--定义列表视图-->
+    <record model="ir.ui.view" id="oecn_training_lesson_tree_view">
+        <field name="name">课程列表1</field>
+        <field name="type">tree</field>
+        <field name="model">academy.teachers</field>
+        <field name="arch" type="xml">
+            <tree string="课程列表" version="7.0">
+                <field name="name"/>
+                <field name="biography"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- <record id="academy_teacher_form" model="ir.ui.view">
+    <field name="name">Academy teachers: form</field>
+    <field name="model">academy.teachers</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <label for="name"/>
+          <field name="name"/>
+          <label for="biography"/>
+          <field name="biography"/>
+        </sheet>
+      </form>
+    </field>
+  </record> -->
+
+  <menuitem sequence="0" id="menu_academy" name="Academy"/>
+  <menuitem id="menu_academy_content" parent="menu_academy"
+            name="Academy Content"/>
+  <menuitem id="menu_academy_content_teachers"
+            parent="menu_academy_content"
+            action="action_academy_teachers"/>
+
+ </data>
+</openerp>
