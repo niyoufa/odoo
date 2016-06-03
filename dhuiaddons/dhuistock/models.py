@@ -2,7 +2,14 @@
 
 from openerp import models, fields, api
 
-# class dhuistock(models.Model):
-#     _name = 'dhuistock.dhuistock'
+class Good(models.Model):
+    _name = 'dhuistock.good'
 
-#     name = fields.Char()
+    name = fields.Char()
+    sku = fields.Char()
+
+class Order(models.Model):
+    _name = 'dhuistock.order'
+
+    name = fields.Char()
+    status = fields.Char

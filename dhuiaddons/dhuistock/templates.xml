@@ -1,22 +1,107 @@
 <openerp>
-    <data>
-        <!-- <template id="listing"> -->
-        <!--   <ul> -->
-        <!--     <li t-foreach="objects" t-as="object"> -->
-        <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
-        <!--         <t t-esc="object.display_name"/> -->
-        <!--       </a> -->
-        <!--     </li> -->
-        <!--   </ul> -->
-        <!-- </template> -->
-        <!-- <template id="object"> -->
-        <!--   <h1><t t-esc="object.display_name"/></h1> -->
-        <!--   <dl> -->
-        <!--     <t t-foreach="object._fields" t-as="field"> -->
-        <!--       <dt><t t-esc="field"/></dt> -->
-        <!--       <dd><t t-esc="object[field]"/></dd> -->
-        <!--     </t> -->
-        <!--   </dl> -->
-        <!-- </template> -->
-    </data>
+ <data>
+
+  <record id="action_dhui_good_all" model="ir.actions.act_window">
+    <field name="name">所有商品</field>
+    <field name="res_model">dhuistock.good</field>
+  </record>
+
+  <record id="action_dhui_good_seckill" model="ir.actions.act_window">
+    <field name="name">秒拍商品</field>
+    <field name="res_model">dhuistock.good</field>
+  </record>
+
+  <record id="action_dhui_good_special" model="ir.actions.act_window">
+    <field name="name">特价商品</field>
+    <field name="res_model">dhuistock.good</field>
+  </record>
+
+  <!--导航栏菜单-->
+  <menuitem sequence="0" id="menu_dhui_shoppingmall" name="东汇商城"/>
+
+  <!--商品-->
+  <menuitem id="menu_dhui_good" parent="menu_dhui_shoppingmall"
+            name="商品"/>
+  <menuitem id="menu_dhui_good_all"
+            parent="menu_dhui_good"
+            action="action_dhui_good_all"/>
+  <!--秒拍商品-->
+  <menuitem id="menu_dhui_good_seckill"
+            parent="menu_dhui_good"
+            action="action_dhui_good_seckill"/>
+  <!--特价商品-->
+  <menuitem id="menu_dhui_good_special"
+            parent="menu_dhui_good"
+            action="action_dhui_good_special"/>
+
+  <record id="action_menu_dhui_order" model="ir.actions.act_window">
+      <field name="name">订单</field>
+      <field name="res_model">dhuistock.order</field>
+  </record>
+
+  <record id="action_menu_dhui_order_all" model="ir.actions.act_window">
+      <field name="name">所有订单</field>
+      <field name="res_model">dhuistock.order</field>
+  </record>
+
+  <record id="product_category_tree_view" model="ir.ui.view">
+            <field name="name">dhuistock.order.tree</field>
+            <field name="model">dhuistock.order</field>
+            <!--<field name="field_parent">child_id</field>-->
+            <field name="arch" type="xml">
+                <tree toolbar="True" string="Product Categories">
+                    <field name="name"/>
+                </tree>
+            </field>
+  </record>
+  <record id="action_menu_dhui_order_status" model="ir.actions.act_window">
+      <field name="name">按状态</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">dhuistock.order</field>
+      <!--<field name="domain">[('parent_id','=',False)]</field>-->
+      <field name="view_type">tree</field>
+      <field name="view_id" ref="product_category_tree_view"/>
+      <field name="help" type="html">
+        <p>
+          Here is a list of all your products classified by category. You
+          can click a category to get the list of all products linked to
+          this category or to a child of this category.
+        </p>
+    </field>
+  </record>
+
+  <record id="action_menu_dhui_order_type" model="ir.actions.act_window">
+      <field name="name">按类型</field>
+      <field name="res_model">dhuistock.order</field>
+  </record>
+
+  <!--订单-->
+  <menuitem id="menu_dhui_order" parent="menu_dhui_shoppingmall"
+            name="订单"/>
+  <menuitem id="menu_dhui_order_list"
+            parent="menu_dhui_order"
+            name="订单"/>
+  <!--所有订单-->
+  <menuitem id="menu_dhui_order_list_all"
+            parent="menu_dhui_order_list"
+            action="action_menu_dhui_order_all"/>
+  <!--按状态-->
+  <menuitem id="menu_dhui_order_list_status"
+            parent="menu_dhui_order_list"
+            action="action_menu_dhui_order_status"/>
+  <!--按类型-->
+  <menuitem id="menu_dhui_order_list_type"
+            parent="menu_dhui_order_list"
+            action="action_menu_dhui_order_type"/>
+
+  <record id="action_menu_dhui_order_deliver" model="ir.actions.act_window">
+      <field name="name">发货单</field>
+      <field name="res_model">dhuistock.order</field>
+  </record>
+  <!--发货单-->
+  <menuitem id="menu_dhui_order_deliver"
+            parent="menu_dhui_order"
+            action="action_menu_dhui_order_deliver"/>
+
+ </data>
 </openerp>
