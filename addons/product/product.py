@@ -602,10 +602,6 @@ class product_template(osv.osv):
         # related to display product product information if is_product_variant
         'ean13': fields.related('product_variant_ids', 'ean13', type='char', string='EAN13 Barcode'),
         'default_code': fields.related('product_variant_ids', 'default_code', type='char', string='Internal Reference'),
-
-        #add by niyoufa 2016-05-20
-        'sku':fields.char('SKU',select=True),
-        'dhui_user_id':fields.char('DHUI PARTNER USER ID',select=True),
     }
 
     def _price_get_list_price(self, product):

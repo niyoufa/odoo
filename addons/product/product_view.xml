@@ -38,8 +38,6 @@
                     <field name="type"/>
                     <field name="state"/>
                     <field name="uom_id" invisible="1"/>
-                    <field name="sku"/>
-                    <field name="dhui_user_id"/>
                 </tree>
             </field>
         </record>

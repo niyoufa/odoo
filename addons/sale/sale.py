@@ -250,12 +250,6 @@ class sale_order(osv.osv):
         'section_id': fields.many2one('crm.case.section', 'Sales Team'),
         'procurement_group_id': fields.many2one('procurement.group', 'Procurement group', copy=False),
         'product_id': fields.related('order_line', 'product_id', type='many2one', relation='product.product', string='Product'),
-
-        #add by niyoufa 2016-05-23
-        '_id':fields.char('订单ID',select=True),
-        'order_customer_id':fields.char('下单用户ID',select=True),
-        'order_address_id':fields.char('订单发货地址ID',select=True),
-        'order_purchase_time':fields.char('订单支付时间',select=True),
     }
 
     _defaults = {

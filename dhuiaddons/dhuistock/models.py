@@ -1,15 +1,24 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields, api
+from openerp.osv import fields, osv
 
-class Good(models.Model):
-    _name = 'dhuistock.good'
+class product_template(osv.osv):
+    _name = 'product.template'
+    _inherit = 'product.template'
 
-    name = fields.Char()
-    sku = fields.Char()
+    _columns = {
+        'sku': fields.char('商品码', select=True),
+        'dhui_user_id': fields.char('供应商ID', select=True),
+    }
 
-class Order(models.Model):
-    _name = 'dhuistock.order'
+class sale_order(osv.osv):
+    _name = 'sale.order'
+    _inherit = 'sale.order'
 
-    name = fields.Char()
-    status = fields.Char
+    _columns = {
+        '_id':fields.char('订单ID',select=True),
+        'order_customer_id':fields.char('下单用户ID',select=True),
+        'order_address_id':fields.char('订单发货地址ID',select=True),
+        'order_purchase_time':fields.char('订单支付时间',select=True),
+    }

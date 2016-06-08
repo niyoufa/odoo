@@ -47,12 +47,6 @@
                     <field name="user_id"/>
                     <field name="amount_total" sum="Total Tax Included"/>
                     <field name="state"/>
-                    <!-- add by niyoufa 2016-05-23 -->
-                    <field name="_id"/>
-                    <!-- add by niyoufa 2016-05-27 -->
-                    <field name="order_customer_id"/>
-                    <field name="order_address_id"/>
-                    <field name="order_purchase_time"/>
                 </tree>
             </field>
         </record>

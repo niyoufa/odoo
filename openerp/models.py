@@ -613,7 +613,6 @@ class BaseModel(object):
         depends = {}
         constraints = {}
         sql_constraints = []
-
         for base in reversed(bases):
             inherits.update(base._inherits)
 
